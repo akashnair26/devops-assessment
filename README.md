@@ -56,6 +56,9 @@ Local PostgreSQL via Docker Compose:
 docker-compose.yml
 db/
   01_schema.sql   # hotel_bookings + booking_events
+scripts/
+  backup.sh
+  restore.sh
 ```
 
 ```bash
@@ -63,3 +66,15 @@ docker compose up -d
 ```
 
 Postgres runs `db/01_schema.sql` on first boot (mounted straight into `/docker-entrypoint-initdb.d`), so a fresh `docker compose up -d` gives you the schema with no extra steps.
+
+### Backup and restore
+
+```bash
+./scripts/backup.sh
+```
+
+Dumps the running database with `pg_dump`, gzips it, and writes a timestamped file to `backups/` (gitignored, nothing here gets committed).
+
+```bash
+./scripts/restore.sh backups/<the-file>.sql.gz
+```

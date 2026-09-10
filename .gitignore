@@ -9,5 +9,8 @@ infra/**/crash.log
 # assessment reference doc, not part of the submission
 *.docx
 
+# Database backups (generated, not part of the submission)
+backups/
+
 # OS
 .DS_Store
