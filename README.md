@@ -2,6 +2,8 @@
 
 ## Terraform
 
+Terraform `~> 1.13.0`, AWS provider `~> 5.100`.
+
 AWS infra lives under `infra/`:
 
 ```
@@ -13,7 +15,7 @@ infra/
 ### Architecture
 
 ```
-Internet → ALB (public subnets) → ECS/Fargate service (private subnets) → RDS PostgreSQL (private subnets)
+Internet -> ALB (public subnets) -> ECS/Fargate service (private subnets) -> RDS PostgreSQL (private subnets)
 ```
 
 - One VPC across 2 AZs.
