@@ -47,3 +47,19 @@ terraform init
 terraform validate
 terraform plan -refresh=false
 ```
+
+## Database
+
+Local PostgreSQL via Docker Compose:
+
+```
+docker-compose.yml
+db/
+  01_schema.sql   # hotel_bookings + booking_events
+```
+
+```bash
+docker compose up -d
+```
+
+Postgres runs `db/01_schema.sql` on first boot (mounted straight into `/docker-entrypoint-initdb.d`), so a fresh `docker compose up -d` gives you the schema with no extra steps.
